@@ -1,0 +1,84 @@
+﻿<Window x:Class="K204160664_PhamNguyenBichKhuyen_OnTapThucHanhWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:K204160664_PhamNguyenBichKhuyen_OnTapThucHanhWPF"
+        mc:Ignorable="d"
+        Title="Chương trình quản lý nhân viên" Height="557" Width="554" MinWidth="550" MinHeight="600" Closing="Window_Closing" WindowStartupLocation="CenterScreen">
+    <StackPanel>
+        <Label Content="CHƯƠNG TRÌNH QUẢN LÝ NHÂN VIÊN" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <DockPanel Height="284">
+            <GroupBox x:Name="grbEmpInfo" Header="Thông tin nhân viên" Foreground="#FF0300FF" Margin="10,10,0,10" MinHeight="250" MinWidth="350" Width="382">
+                <Grid>
+                    <Label Content="Mã NV:" HorizontalAlignment="Left" Margin="31,19,0,0" VerticalAlignment="Top" Height="26"/>
+                    <Label Content="Họ Tên:" HorizontalAlignment="Left" Margin="31,45,0,0" VerticalAlignment="Top" Height="26"/>
+                    <Label Content="Giới tính:" HorizontalAlignment="Left" Margin="31,71,0,0" VerticalAlignment="Top" Height="26"/>
+                    <Label Content="Điện thoại:" HorizontalAlignment="Left" Margin="31,97,0,0" VerticalAlignment="Top" Height="26"/>
+                    <Label Content="Ngày vào làm:" HorizontalAlignment="Left" Margin="31,123,0,0" VerticalAlignment="Top" Height="26"/>
+                    <Label Content="Loại NV:" HorizontalAlignment="Left" Margin="31,158,0,0" VerticalAlignment="Top" Height="26"/>
+                    <Label x:Name="lblRevenueOrAllowance" Content="Doanh số:" HorizontalAlignment="Left" Margin="31,184,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txtId" HorizontalAlignment="Left" Margin="158,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="194"/>
+                    <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="158,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="194"/>
+                    <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Margin="158,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="194"/>
+                    <TextBox x:Name="txtRevenueOrAllowance" HorizontalAlignment="Left" Margin="158,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="194"/>
+                    <RadioButton x:Name="radBoy" GroupName="Gender" Content="Nam" HorizontalAlignment="Left" Margin="158,77,0,0" VerticalAlignment="Top"/>
+                    <RadioButton x:Name="radGirl" GroupName="Gender" Content="Nữ" HorizontalAlignment="Left" Margin="232,77,0,0" VerticalAlignment="Top"/>
+                    <DatePicker x:Name="dtpHireDate" HorizontalAlignment="Left" Margin="159,127,0,0" VerticalAlignment="Top" Height="27" Width="193" SelectedDateFormat="Short">
+                        <DatePicker.Resources>
+                            <Style TargetType="{x:Type DatePickerTextBox}">
+                                <Setter Property="Control.Template">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <TextBox x:Name="PART_TextBox"
+                                                    Text="{Binding Path=SelectedDate, StringFormat='dd/MM/yyyy', 
+                                                    RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}"/>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DatePicker.Resources>
+                    </DatePicker>
+
+                    <RadioButton x:Name="radSaler" GroupName="EmpType" Content="Bán hàng" HorizontalAlignment="Left" Margin="158,164,0,0" VerticalAlignment="Top" Checked="radSaler_Checked"/>
+                    <RadioButton x:Name="radShipper" GroupName="EmpType" Content="Giao nhận" HorizontalAlignment="Left" Margin="232,164,0,0" VerticalAlignment="Top" Checked="radShipper_Checked"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox x:Name="grbAction" Header="Tác vụ" Margin="10,10,10,10" Foreground="#FF0300FF" Width="124" DockPanel.Dock="Right" MinHeight="250" MinWidth="110" HorizontalAlignment="Right">
+                <Grid>
+                    <Button x:Name="btnAdd" Content="Thêm" HorizontalAlignment="Center" Margin="0,21,0,0" VerticalAlignment="Top" Width="68" Background="#FFBFF5F7" BorderBrush="#FF0F40DA" Foreground="Black" Click="btnAdd_Click"/>
+                    <Button x:Name="btnSave" Content="Lưu" HorizontalAlignment="Center" Margin="0,54,0,0" VerticalAlignment="Top" Width="68" Background="#FFBFF5F7" BorderBrush="#FF0F40DA" Foreground="Black" Click="btnSave_Click"/>
+                    <Button x:Name="btnDelete" Content="Xóa" HorizontalAlignment="Center" Margin="0,87,0,0" VerticalAlignment="Top" Width="68" Background="#FFBFF5F7" BorderBrush="#FF0F40DA" Foreground="Black" Click="btnDelete_Click"/>
+                    <Button x:Name="btnUpdate" Content="Sửa" HorizontalAlignment="Center" Margin="0,121,0,0" VerticalAlignment="Top" Width="68" Background="#FFBFF5F7" BorderBrush="#FF0F40DA" Foreground="Black" Click="btnUpdate_Click"/>
+                    <Button x:Name="btnArrange" Content="Sắp xếp" HorizontalAlignment="Center" Margin="0,154,0,0" VerticalAlignment="Top" Width="68" Background="#FFBFF5F7" BorderBrush="#FF0F40DA" Foreground="Black" Click="btnArrange_Click"/>
+                    <Button x:Name="btnStatistic" Content="Thống kê" HorizontalAlignment="Center" Margin="0,187,0,0" VerticalAlignment="Top" Width="68" Background="#FFBFF5F7" BorderBrush="#FF0F40DA" Foreground="Black" Click="btnStatistic_Click"/>
+
+                </Grid>
+            </GroupBox>
+        </DockPanel>
+        <GroupBox x:Name="grbEmpList" Header="Danh sách nhân viên" Margin="10,10,10,0" Foreground="#FF0300FF" Height="194" MinHeight="100">
+            <ListView x:Name="lvEmployeeList" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="lvEmployeeList_SelectionChanged">
+                <ListView.Resources>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Seniority5Years}"
+                                        Value="True">
+                                <Setter Property="Background"
+                                        Value="Yellow" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Mã NV" Width="100" DisplayMemberBinding="{Binding EmployeeId}"/>
+                        <GridViewColumn Header="Họ Tên" Width="160" DisplayMemberBinding="{Binding EmployeeName}"/>
+                        <GridViewColumn Header="Giới tính" Width="100" DisplayMemberBinding="{Binding Gender}"/>
+                        <GridViewColumn Header="Ngày vào làm" Width="150" DisplayMemberBinding="{Binding HireDate}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </GroupBox>
+
+    </StackPanel>
+</Window>
